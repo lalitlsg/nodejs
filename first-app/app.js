@@ -22,7 +22,7 @@ fs.readdir("./", (err, files) => {
 
 //event module
 const emitter = new EventEmitter();
-emitter.on("messageLogged", () => {
-  console.log("Message Logged");
+emitter.on("messageLogged", arg => {
+  console.log("Message Logged", arg);
 });
-emitter.emit("messageLogged");
+emitter.emit("messageLogged", { id: 1, name: "Lalit" });
