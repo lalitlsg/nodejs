@@ -1,9 +1,7 @@
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
-const EventEmitter = require("events");
-
-const logger = require("./logger");
+const Logger = require("./logger");
 
 // logger.showName("Laslit");
 
@@ -21,8 +19,14 @@ fs.readdir("./", (err, files) => {
 });
 
 //event module
-const emitter = new EventEmitter();
-emitter.on("messageLogged", arg => {
+// const emitter = new EventEmitter();
+// emitter.on("messageLogged", arg => {
+//   console.log("Message Logged", arg);
+// });
+// emitter.emit("messageLogged", { id: 1, name: "Lalit" });
+
+const logger = new Logger();
+logger.on("messageLogged", arg => {
   console.log("Message Logged", arg);
 });
-emitter.emit("messageLogged", { id: 1, name: "Lalit" });
+logger.showName("Lalit");

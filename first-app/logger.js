@@ -1,5 +1,10 @@
-const showName = name => {
-  console.log(`The name is ${name}`);
-};
+const EventEmitter = require("events");
 
-module.exports.showName = showName;
+class Logger extends EventEmitter {
+  showName(name) {
+    console.log(`The name is ${name}`);
+    this.emit("messageLogged", { id: 1, name: "Lalit" });
+  }
+}
+
+module.exports = Logger;
