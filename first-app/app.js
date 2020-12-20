@@ -1,6 +1,7 @@
 const path = require("path");
 const os = require("os");
 const fs = require("fs");
+const EventEmitter = require("events");
 
 const logger = require("./logger");
 
@@ -18,3 +19,10 @@ fs.readdir("./", (err, files) => {
   if (err) console.log("Error", err);
   else console.log("Files", files);
 });
+
+//event module
+const emitter = new EventEmitter();
+emitter.on("messageLogged", () => {
+  console.log("Message Logged");
+});
+emitter.emit("messageLogged");
